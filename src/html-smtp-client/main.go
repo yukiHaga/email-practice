@@ -49,7 +49,7 @@ func main() {
 	mailMessage += fmt.Sprintf("Cc: %s\r\n", mailCCRecepterAddr)
 	mailMessage += fmt.Sprintf("From: %s\r\n", mailSenderAddr)
 	mailMessage += fmt.Sprintf("Subject: %s\r\n", "ハローワールドの贈呈")
-	// HTMLメールを送る場合、必ずテキストメッセージも送る
+	// HTMLメールを送る場合、必ずテキストメールも送る
 	// 両方送る場合、multipart/alternativeというMIMEタイプをContent-Typeに指定する
 	mailMessage += fmt.Sprintf("Content-Type: multipart/alternative; boundary=%s\r\n", boundary)
 
