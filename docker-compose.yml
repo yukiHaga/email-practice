@@ -1,0 +1,21 @@
+version: "3"
+services:
+  #メールサーバのコンテナ
+  # 本来の SMTPでは、port：25が一般的
+  mail:
+    image: mailhog/mailhog
+    container_name: mailhog
+    ports:
+      # HTTPサーバーのポートをバインド
+      - "8025:8025"
+      # SMTPサーバーのポートをバインド
+      - "1025:1025"
+    environment:
+      MH_STORAGE: maildir
+      MH_MAILDIR_PATH: /tmp
+    volumes:
+      - mail-volumes:/tmp
+volumes:
+  # mailhog はメールをメモリ上に保存するため、Docker のコンテナを停止するとメールが消えてしまう。
+  # そのため、メールのデータをボリュームに保存しておく
+  mail-volumes:
